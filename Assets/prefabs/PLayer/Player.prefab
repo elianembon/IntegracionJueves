@@ -6800,6 +6800,8 @@ GameObject:
   - component: {fileID: 7315117101818612890}
   - component: {fileID: 4639230721946234413}
   - component: {fileID: 5605845722069704580}
+  - component: {fileID: 213987523475576013}
+  - component: {fileID: 4119584843232509276}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -6890,7 +6892,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9197255794030533940}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!114 &955170759314184666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7047,6 +7049,42 @@ MonoBehaviour:
   blendDistance: 0
   weight: 1
   sharedProfile: {fileID: 0}
+--- !u!114 &213987523475576013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9197255794030533940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58e0fac3e26b33f45bb0bc125aa38887, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_listeners:
+    initialListenerList: []
+    useDefaultListeners: 1
+  isEnvironmentAware: 1
+  isStaticObject: 0
+  m_positionOffsetData:
+    KeepMe: 0
+    positionOffset: {x: 0, y: 0, z: 0}
+  m_posOffsetData: {fileID: 0}
+  listenerMask: 1
+--- !u!114 &4119584843232509276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9197255794030533940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcf5e3ffa08ee554ba7094bcd70f3b8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDefaultListener: 1
+  listenerId: 0
 --- !u!1 &9206250367275655443
 GameObject:
   m_ObjectHideFlags: 0
