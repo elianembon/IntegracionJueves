@@ -4901,7 +4901,7 @@ MonoBehaviour:
     playerCamera: {fileID: 6169595585377697965}
     interactableLayer:
       serializedVersion: 2
-      m_Bits: 8387455
+      m_Bits: 8387451
     interactRange: 2
     jumpCooldown: 0.5
     groundRadius: 0.5
