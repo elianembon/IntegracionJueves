@@ -4247,7 +4247,7 @@ GameObject:
   - component: {fileID: 1000627794}
   - component: {fileID: 1000627793}
   - component: {fileID: 1000627792}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MusicZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
