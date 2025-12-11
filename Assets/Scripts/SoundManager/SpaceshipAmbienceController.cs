@@ -111,4 +111,13 @@ public class SpaceshipAmbienceController : MonoBehaviour
             }
         }
     }
+
+    private void OnDestroy()
+    {
+        Debug.Log("¡Destruyendo nave y matando audio!");
+
+        // StopAll sin argumentos detiene TODO el audio del juego
+        // Útil si cambias de escena y quieres silencio total antes de empezar la otra.
+        AkSoundEngine.StopAll();
+    }
 }
