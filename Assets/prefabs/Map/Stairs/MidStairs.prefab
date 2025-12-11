@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7473542381564787636}
   m_Layer: 7
   m_Name: Centro de la escalera (Origen)
-  m_TagString: Untagged
+  m_TagString: Stairs
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 3650382080316974009}
   m_Layer: 10
   m_Name: MidStairs
-  m_TagString: Ground
+  m_TagString: Stairs
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -184,6 +184,8 @@ MonoBehaviour:
   visualL1: {fileID: 6429522135775522848}
   protectionMaterial: {fileID: 2100000, guid: db1b782428e1f55488c4412e28ae1dfe, type: 2}
   baseAudioSource: {fileID: 0}
+  inspectionClip: {fileID: 0}
+  customInspectionDuration: 0
   objectName: Object
   originDescription: The central stairs are intact and can be used to climb.
   brokenDescription: The central section of the stairs is missing. It is impossible
@@ -340,6 +342,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 099e02e960081ae4e9b85bf117475bd5, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 099e02e960081ae4e9b85bf117475bd5, type: 3}
+      propertyPath: m_TagString
+      value: Stairs
       objectReference: {fileID: 0}
     - target: {fileID: 7291416824397310632, guid: 099e02e960081ae4e9b85bf117475bd5, type: 3}
       propertyPath: m_Materials.Array.size

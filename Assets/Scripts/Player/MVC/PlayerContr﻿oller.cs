@@ -11,7 +11,7 @@ public class PlayerController
     private bool isHoldingClick;
     private float stepTimer = 0f;
     private CoroutineRunner coroutineRunner;
-
+    private string currentSurface = "";
     // Clase interna para corrutinas
     private class CoroutineRunner : MonoBehaviour { }
 
@@ -118,6 +118,44 @@ public class PlayerController
 
         rb.velocity = model.currentVelocity;
 
+        // 1. Obtener velocidad real
+        float currentSpeedMagnitude = new Vector3(rb.velocity.x, 0, rb.velocity.z).magnitude;
+
+        // 2. CORRECCIÓN: Si estamos casi parados (threshold de 0.1), forzar silencio absoluto
+        if (currentSpeedMagnitude < 0.1f)
+        {
+            // Forzamos a Wwise a recibir un 0 absoluto
+            AkSoundEngine.SetRTPCValue("Player_Speed", 0f, rb.gameObject);
+
+            // Reiniciamos el timer para que el próximo paso no suene instantáneamente al arrancar
+            stepTimer = 0f;
+        }
+        else
+        {
+            // Cálculo normal normalizado de 0 a 100
+            float maxSpeed = model.runSpeed > 0 ? model.runSpeed : 1f;
+            float wwiseSpeedValue = (currentSpeedMagnitude / maxSpeed) * 100f;
+            wwiseSpeedValue = Mathf.Clamp(wwiseSpeedValue, 0f, 100f);
+
+            AkSoundEngine.SetRTPCValue("Player_Speed", wwiseSpeedValue, rb.gameObject);
+
+            // --- LÓGICA DE PASOS ---
+            // Solo contamos el tiempo si estamos en el suelo y moviéndonos
+            if (model.isGrounded)
+            {
+                stepTimer += Time.deltaTime;
+
+                // Ajustamos el intervalo según si corre o camina
+                float currentInterval = model.isRunning ? model.runStepInterval : model.stepInterval;
+
+                if (stepTimer >= currentInterval)
+                {
+                    PlayFootstep();
+                    stepTimer = 0f;
+                }
+            }
+        }
+
         HandleGrapplePull();
 
         HandleHeadBob(moveX, moveZ, wantToRun);
@@ -186,12 +224,35 @@ public class PlayerController
 
     private void PlayFootstep()
     {
-        if (model.footstepSource != null && model.footstepClips.Count > 0)
+        // Valor por defecto (ahora es Metal)
+        string newSurface = "Metal";
+
+        RaycastHit hit;
+        // Raycast un poco elevado (+0.2f) para evitar fallos con el pivote a ras de suelo
+        if (Physics.Raycast(rb.position + Vector3.up * 0.2f, Vector3.down, out hit, 1.5f, model.groundLayers))
         {
-            int index = Random.Range(0, model.footstepClips.Count);
-            model.footstepSource.clip = model.footstepClips[index];
-            model.footstepSource.Play();
+            // Si el objeto tiene el tag "Stairs", ahora cambiamos a Snow
+            if (hit.collider.CompareTag("Stairs"))
+            {
+                newSurface = "Snow";
+            }
+            // Aquí puedes agregar más 'else if' para otros tags
         }
+
+        // --- CORRECCIÓN TILES: OPTIMIZACIÓN DE SWITCH ---
+
+        // Solo le decimos a Wwise que cambie el Switch SI es diferente al anterior.
+        if (currentSurface != newSurface)
+        {
+            // Asegúrate de que "Types_Floor_Steps" sea el nombre correcto de tu Switch Group en Wwise
+            AkSoundEngine.SetSwitch("Types_Floor_Steps", newSurface, rb.gameObject);
+            currentSurface = newSurface; // Actualizamos la memoria
+                                         // Debug.Log($"Cambiando superficie Wwise a: {newSurface}");
+        }
+
+        // Disparamos el sonido (Wwise usará el Switch que tenga configurado actualmente)
+        // Asegúrate de que "Play_Player_FootSteps" sea el nombre correcto de tu Evento en Wwise
+        AkSoundEngine.PostEvent("Play_Player_FootSteps", rb.gameObject);
     }
 
     private void HandleInteraction()

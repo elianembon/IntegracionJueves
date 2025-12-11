@@ -12,6 +12,7 @@ TagManager:
   - mapTileOrigen
   - TimeAffected
   - Object
+  - Stairs
   layers:
   - Default
   - TransparentFX

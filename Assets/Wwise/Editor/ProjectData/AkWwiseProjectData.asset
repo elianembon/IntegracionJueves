@@ -362,7 +362,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: 0cb77857ec158e4a89fc3bee9904ad15
     GuidInternal: 
-    m_lastTime: -8584361785014331560
+    m_lastTime: -8584361662309176311
     List:
     - name: SpaceShip_SoundBank
       guid: b115b449b1f8e348952e329b84afd807
@@ -378,6 +378,20 @@ MonoBehaviour:
         ObjectType: 7
         guid: b115b449b1f8e348952e329b84afd807
       Path: SoundBanks\Default Work Unit\SpaceShip_SoundBank
+    - name: SpaceShipPool
+      guid: eb4420bbcd97704895da3e505b43d799
+      id: 3935085437
+      PathAndIcons:
+      - ElementName: SoundBanks
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 0cb77857ec158e4a89fc3bee9904ad15
+      - ElementName: SpaceShipPool
+        ObjectType: 7
+        guid: eb4420bbcd97704895da3e505b43d799
+      Path: SoundBanks\Default Work Unit\SpaceShipPool
   EventWwu:
   - PhysicalPath: Events\Default Work Unit.wwu
     PathAndIcons:
