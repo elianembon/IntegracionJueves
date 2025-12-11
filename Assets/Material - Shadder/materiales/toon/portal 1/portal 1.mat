@@ -98,7 +98,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _ActivationTime: 3.7266936
+    - _ActivationTime: 118.243515
     - _AlphaClip: 0
     - _AlphaToMask: 0
     - _Blend: 0
