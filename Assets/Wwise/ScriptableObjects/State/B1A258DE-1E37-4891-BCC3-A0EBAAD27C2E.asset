@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f70809b9b147144b871e2ca0d16db4e, type: 3}
+  m_Name: B1A258DE-1E37-4891-BCC3-A0EBAAD27C2E
+  m_EditorClassIdentifier: 
+  objectName: Explorando
+  id: 2877940427
+  guid: B1A258DE-1E37-4891-BCC3-A0EBAAD27C2E
+  WwiseStateGroupReference: {fileID: 11400000, guid: 98910e931fb930e42921bd429270ea18, type: 2}
